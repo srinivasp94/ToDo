@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My TODO</string>
+    <string name="fab_description">fab click</string>
+    <string name="add_todo">Add ToDo</string>
+    <string name="error_alert_title">Failed to add TODO</string>
+    <string name="error_alert_message">Please enter TODO text info </string>
+    <string name="confirm_text">OK </string>
+    <string name="error_while_fetching_todos">Error while fetching TODOs</string>
+
+</resources>
