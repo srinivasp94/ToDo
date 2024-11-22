@@ -2,12 +2,11 @@ package com.srinivas.mytodo.di
 
 import android.content.Context
 import androidx.room.Room
-import com.srinivas.mytodo.ui.components.AppConstants
 import com.srinivas.mytodo.data.room.ToDoRoomDB
 import com.srinivas.mytodo.data.room.dao.TodoDao
 import com.srinivas.mytodo.domain.TodoRepositoryImpl
 import com.srinivas.mytodo.domain.repository.TodoRepository
-import dagger.Binds
+import com.srinivas.mytodo.ui.components.AppConstants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

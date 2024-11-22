@@ -39,7 +39,6 @@ fun DetailsScreen(navController: NavController, viewModel: TodoViewModel) {
 
     var isAlertShowing by remember { mutableStateOf(false) }
     val todoText = remember { mutableStateOf("") }
-    //val isAlertShowing = viewModel.showError.value
 
     Scaffold {
         Column(

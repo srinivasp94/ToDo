@@ -21,16 +21,10 @@ class TodoViewModel @Inject constructor(private val repository: TodoRepository) 
     private val _todoList = MutableStateFlow<ResponseState<List<ToDo>>>(ResponseState.Loading())
     val todoList: StateFlow<ResponseState<List<ToDo>>> = _todoList
 
-    private val _showError = MutableLiveData(false)
-    val showError : LiveData<Boolean> = _showError
-
     init {
         fetchTodos()
     }
 
-    fun showAlertForError(isAlertNeeded : Boolean){
-        _showError.value = isAlertNeeded
-    }
 
     private fun fetchTodos() {
         viewModelScope.launch(Dispatchers.IO) {

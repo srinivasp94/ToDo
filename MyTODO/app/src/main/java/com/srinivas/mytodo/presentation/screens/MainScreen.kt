@@ -2,15 +2,11 @@ package com.srinivas.mytodo.presentation.screens
 
 import android.annotation.SuppressLint
 import android.util.Log
-import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,7 +19,6 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -34,7 +29,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.srinivas.mytodo.R
 import com.srinivas.mytodo.data.model.ToDo
@@ -43,9 +37,9 @@ import com.srinivas.mytodo.presentation.viewmodels.TodoViewModel
 import com.srinivas.mytodo.ui.components.NormalTextComponent
 import com.srinivas.mytodo.ui.components.NormalTextComponentWithClick
 import com.srinivas.mytodo.ui.components.ShowCircularLoader
+import com.srinivas.mytodo.ui.components.ShowTodoItem
 import com.srinivas.mytodo.ui.navigation.DETAILS
 import com.srinivas.mytodo.ui.theme.LightYellow
-import com.srinivas.mytodo.ui.theme.Pink80
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -96,10 +90,7 @@ fun MainContent(todoListResponse: ResponseState<List<ToDo>>) {
                     (todoListResponse as ResponseState.Success<List<ToDo>>).data as List<ToDo>
                 LazyColumn(modifier = Modifier.fillMaxHeight()) {
                     items(items = todoList, itemContent = { todo: ToDo ->
-                        todo.let {
-                            ShowTodoItem(it)
-                        }
-
+                        ShowTodoItem(todo)
                     })
                 }
             }
@@ -110,16 +101,4 @@ fun MainContent(todoListResponse: ResponseState<List<ToDo>>) {
     }
 }
 
-@Composable
-fun ShowTodoItem(todo: ToDo) {
-    Column(modifier = Modifier.fillMaxWidth().padding(5.dp),
-        verticalArrangement = Arrangement.SpaceAround,
-        horizontalAlignment = Alignment.Start
-        ) {
-        NormalTextComponentWithClick(todo.todoText, onTextClick = {
-            Log.d("##", todo.todoText)
-        })
-        Divider(modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp), thickness = 1.dp, color = LightYellow)
 
-    }
-}

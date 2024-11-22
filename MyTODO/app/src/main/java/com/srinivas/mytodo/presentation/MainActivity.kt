@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.srinivas.mytodo.R
+import com.srinivas.mytodo.ui.components.AppToolBar
 import com.srinivas.mytodo.ui.components.NormalTextComponent
 import com.srinivas.mytodo.ui.navigation.TodoApp
 import com.srinivas.mytodo.ui.theme.MyTODOTheme
@@ -34,23 +35,15 @@ class MainActivity : ComponentActivity() {
             MyTODOTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
-                    topBar = {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(80.dp)
-                                .background(Color.Yellow),
-                            contentAlignment = Alignment.BottomStart
-                        ) {
-                            NormalTextComponent(stringResource(R.string.app_name))
-                        }
-                    },
+                    topBar = { AppToolBar() },
                     content = { paddingValues ->
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(paddingValues)
-                        ) { TodoApp() }
+                        ) {
+                            TodoApp()
+                        }
                     }
                 )
             }
