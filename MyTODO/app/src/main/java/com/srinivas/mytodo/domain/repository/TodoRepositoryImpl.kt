@@ -6,6 +6,7 @@ import com.srinivas.mytodo.data.model.ToDo
 import com.srinivas.mytodo.data.room.dao.TodoDao
 import com.srinivas.mytodo.domain.repository.TodoRepository
 import com.srinivas.mytodo.domain.state.ResponseState
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -18,6 +19,7 @@ class TodoRepositoryImpl @Inject constructor(private val dao: TodoDao) : TodoRep
 
     override fun getAllTodos(): Flow<ResponseState<List<ToDo>>> {
         return flow {
+            delay(2000)
             emit(ResponseState.Loading())
             Log.d("##Emit","Loading")
             val list = dao.getAllTodos()
